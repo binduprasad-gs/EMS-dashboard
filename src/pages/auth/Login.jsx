@@ -76,6 +76,8 @@ export default function Login() {
         fullWidth
         required
         autoFocus
+        variant="outlined" // Explicitly set the variant
+        margin="normal" // Add proper spacing
       />
 
       <TextField
@@ -85,6 +87,8 @@ export default function Login() {
         onChange={(e) => setPassword(e.target.value)}
         fullWidth
         required
+        variant="outlined"
+        margin="normal"
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

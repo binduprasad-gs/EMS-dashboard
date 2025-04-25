@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import {
   Box,
   Typography,
+  Grid,
   Card,
   CardContent,
   CardActions,
@@ -26,7 +27,6 @@ import {
   Tooltip,
   useTheme,
 } from "@mui/material"
-import Grid from '@mui/material/Grid';
 import {
   Search as SearchIcon,
   Add as AddIcon,
@@ -132,8 +132,8 @@ export default function EmployeeDirectory() {
       </Box>
 
       {/* Search and Filter */}
-      <Grid container spacing={2} sx={{ mb: 4 }}>
-        <Grid size={{xs:12 , md:6}}>
+      <Grid container spacing={2} sx={{ mb: 4, alignItems: "center" }}>
+        <Grid item xs={12} md={6}>
           <TextField
             fullWidth
             placeholder="Search employees..."
@@ -148,7 +148,7 @@ export default function EmployeeDirectory() {
             }}
           />
         </Grid>
-        <Grid size={{xs:12 , md:6}}>
+        <Grid item xs={12} md={6}>
           <FormControl fullWidth>
             <InputLabel id="department-filter-label">Filter by Department</InputLabel>
             <Select
@@ -178,7 +178,7 @@ export default function EmployeeDirectory() {
       <Grid container spacing={3}>
         {filteredEmployees.length > 0 ? (
           filteredEmployees.map((employee) => (
-            <Grid size={{xs:12 ,sm:6, md:4}} key={employee.id}>
+            <Grid item xs={12} sm={6} md={4} key={employee.id}>
               <Card
                 elevation={2}
                 sx={{
@@ -192,7 +192,14 @@ export default function EmployeeDirectory() {
                   },
                 }}
               >
-                <CardContent sx={{ flexGrow: 1 }}>
+                <CardContent
+                  sx={{
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
                   <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 2 }}>
                     <Avatar alt={employee.name} src={employee.avatar} sx={{ width: 80, height: 80, mb: 2 }} />
                     <Typography variant="h6" component="div" align="center">
@@ -243,7 +250,7 @@ export default function EmployeeDirectory() {
             </Grid>
           ))
         ) : (
-          <Grid size={{xs:12}}>
+          <Grid item xs={12}>
             <Typography variant="body1" align="center">
               No employees found matching your search criteria.
             </Typography>
@@ -269,7 +276,7 @@ export default function EmployeeDirectory() {
         </DialogTitle>
         <DialogContent dividers>
           <Grid container spacing={2}>
-            <Grid size={{xs:12}}>
+            <Grid item xs={12}>
               <TextField
                 label="Full Name"
                 fullWidth
@@ -278,7 +285,7 @@ export default function EmployeeDirectory() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Email"
                 type="email"
@@ -288,7 +295,7 @@ export default function EmployeeDirectory() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Phone"
                 fullWidth
@@ -297,7 +304,7 @@ export default function EmployeeDirectory() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth required>
                 <InputLabel>Department</InputLabel>
                 <Select
@@ -313,7 +320,7 @@ export default function EmployeeDirectory() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Role"
                 fullWidth
@@ -322,7 +329,7 @@ export default function EmployeeDirectory() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Join Date"
                 type="date"
@@ -333,7 +340,7 @@ export default function EmployeeDirectory() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Manager"
                 fullWidth
@@ -341,7 +348,7 @@ export default function EmployeeDirectory() {
                 onChange={(e) => setNewEmployee({ ...newEmployee, manager: e.target.value })}
               />
             </Grid>
-            <Grid size={{xs:12 }}>
+            <Grid item xs={12}>
               <TextField
                 label="Address"
                 fullWidth

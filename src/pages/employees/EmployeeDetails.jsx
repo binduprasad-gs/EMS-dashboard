@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import {
   Box,
   Typography,
+  Grid,
   Card,
   CardContent,
   Avatar,
@@ -29,7 +30,6 @@ import {
   MenuItem,
   useTheme,
 } from "@mui/material"
-import Grid from '@mui/material/Grid';
 import {
   Email as EmailIcon,
   Phone as PhoneIcon,
@@ -126,10 +126,10 @@ export default function EmployeeDetails() {
       <Card elevation={3} sx={{ mb: 4 }}>
         <CardContent>
           <Grid container spacing={3}>
-            <Grid size={{xs:12 , md:2}} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Grid item xs={12} md={2} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
               <Avatar alt={employee.name} src={employee.avatar} sx={{ width: 120, height: 120 }} />
             </Grid>
-            <Grid size={{xs:12 , md:8}}>
+            <Grid item xs={12} md={8}>
               <Box sx={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "center" }}>
                 <Typography variant="h5" gutterBottom>
                   {employee.name}
@@ -144,7 +144,7 @@ export default function EmployeeDetails() {
                 </Box>
               </Box>
             </Grid>
-            <Grid size={{xs:12 , md:2}} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Grid item xs={12} md={2} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
               {isAdmin() && (
                 <Button variant="outlined" startIcon={<EditIcon />} onClick={() => setOpenEditDialog(true)}>
                   Edit Profile
@@ -175,7 +175,7 @@ export default function EmployeeDetails() {
         {/* Personal Info Tab */}
         <TabPanel value={tabValue} index={0}>
           <Grid container spacing={3}>
-            <Grid size={{xs:12 , md:6}}>
+            <Grid item xs={12} md={6}>
               <Card elevation={2}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -201,7 +201,7 @@ export default function EmployeeDetails() {
               </Card>
             </Grid>
 
-            <Grid size={{xs:12 , md:6}}>
+            <Grid item xs={12} md={6}>
               <Card elevation={2}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -294,7 +294,7 @@ export default function EmployeeDetails() {
         {/* Attendance Tab */}
         <TabPanel value={tabValue} index={2}>
           <Grid container spacing={3}>
-            <Grid size={{xs:12 , md:4}}>
+            <Grid item xs={12} md={4}>
               <Card elevation={2}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -325,7 +325,7 @@ export default function EmployeeDetails() {
               </Card>
             </Grid>
 
-            <Grid size={{xs:12 , md:8}}>
+            <Grid item xs={12} md={8}>
               <Card elevation={2}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -379,7 +379,7 @@ export default function EmployeeDetails() {
         {/* Skills & Projects Tab */}
         <TabPanel value={tabValue} index={3}>
           <Grid container spacing={3}>
-            <Grid size={{xs:12 , md:6}}>
+            <Grid item xs={12} md={6}>
               <Card elevation={2}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -409,7 +409,7 @@ export default function EmployeeDetails() {
               </Card>
             </Grid>
 
-            <Grid size={{xs:12 , md:6}}>
+            <Grid item xs={12} md={6}>
               <Card elevation={2}>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
@@ -438,11 +438,22 @@ export default function EmployeeDetails() {
       </Box>
 
       {/* Edit Employee Dialog */}
-      <Dialog open={openEditDialog} onClose={() => setOpenEditDialog(false)} maxWidth="md" fullWidth>
-        <DialogTitle>Edit Employee</DialogTitle>
-        <DialogContent dividers>
+      <Dialog
+        open={openEditDialog}
+        onClose={() => setOpenEditDialog(false)}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 2,
+            boxShadow: 24,
+          },
+        }}
+      >
+        <DialogTitle sx={{ pb: 1 }}>Edit Employee</DialogTitle>
+        <DialogContent dividers sx={{ pt: 2 }}>
           <Grid container spacing={2}>
-          <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Full Name"
                 fullWidth
@@ -451,7 +462,7 @@ export default function EmployeeDetails() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Email"
                 type="email"
@@ -461,7 +472,7 @@ export default function EmployeeDetails() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Phone"
                 fullWidth
@@ -470,7 +481,7 @@ export default function EmployeeDetails() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth required>
                 <InputLabel>Department</InputLabel>
                 <Select
@@ -486,7 +497,7 @@ export default function EmployeeDetails() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Role"
                 fullWidth
@@ -495,7 +506,7 @@ export default function EmployeeDetails() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Join Date"
                 type="date"
@@ -506,7 +517,7 @@ export default function EmployeeDetails() {
                 required
               />
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Manager"
                 fullWidth
@@ -514,7 +525,7 @@ export default function EmployeeDetails() {
                 onChange={(e) => setEditedEmployee({ ...editedEmployee, manager: e.target.value })}
               />
             </Grid>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Salary"
                 type="number"
@@ -523,7 +534,7 @@ export default function EmployeeDetails() {
                 onChange={(e) => setEditedEmployee({ ...editedEmployee, salary: Number(e.target.value) })}
               />
             </Grid>
-            <Grid size={{xs:12 }}>
+            <Grid item xs={12}>
               <TextField
                 label="Address"
                 fullWidth
@@ -535,7 +546,7 @@ export default function EmployeeDetails() {
             </Grid>
           </Grid>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ px: 3, py: 2 }}>
           <Button onClick={() => setOpenEditDialog(false)}>Cancel</Button>
           <Button onClick={handleEditSave} variant="contained" color="primary">
             Save Changes

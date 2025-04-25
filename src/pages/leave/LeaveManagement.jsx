@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import {
   Box,
   Typography,
+  Grid,
   Card,
   CardContent,
   Button,
@@ -23,7 +24,6 @@ import {
   Divider,
   useTheme,
 } from "@mui/material"
-import Grid from '@mui/material/Grid';
 import {
   Add as AddIcon,
   Check as CheckIcon,
@@ -162,7 +162,7 @@ export default function LeaveManagement() {
 
       {/* Stats Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid size={{xs:12 ,sm:6, md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
             elevation={2}
             sx={{
@@ -193,7 +193,7 @@ export default function LeaveManagement() {
           </Card>
         </Grid>
 
-        <Grid size={{xs:12 ,sm:6, md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
             elevation={2}
             sx={{
@@ -224,7 +224,7 @@ export default function LeaveManagement() {
           </Card>
         </Grid>
 
-        <Grid size={{xs:12 ,sm:6, md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
             elevation={2}
             sx={{
@@ -255,7 +255,7 @@ export default function LeaveManagement() {
           </Card>
         </Grid>
 
-        <Grid size={{xs:12 ,sm:6, md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
             elevation={2}
             sx={{
@@ -343,8 +343,8 @@ export default function LeaveManagement() {
         {/* All Leaves Tab */}
         <TabPanel value={tabValue} index={0}>
           {filteredLeaves.length > 0 ? (
-            <Box sx={{ overflowX: "auto" }}>
-              <Box sx={{ minWidth: 800 }}>
+            <Box sx={{ overflowX: "auto", width: "100%" }}>
+              <Box sx={{ minWidth: 800, width: "100%" }}>
                 <Box sx={{ display: "flex", fontWeight: "bold", p: 2, bgcolor: "background.default" }}>
                   {isAdmin() && <Box sx={{ flex: 2 }}>Employee</Box>}
                   <Box sx={{ flex: 1 }}>Type</Box>
@@ -484,7 +484,7 @@ export default function LeaveManagement() {
               </Grid>
             )}
 
-            <Grid size={{xs:12 }}>
+            <Grid item xs={12}>
               <FormControl fullWidth required>
                 <InputLabel>Leave Type</InputLabel>
                 <Select
@@ -501,7 +501,7 @@ export default function LeaveManagement() {
               </FormControl>
             </Grid>
 
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="Start Date"
                 type="date"
@@ -513,7 +513,7 @@ export default function LeaveManagement() {
               />
             </Grid>
 
-            <Grid size={{xs:12 ,sm:6}}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 label="End Date"
                 type="date"
@@ -525,7 +525,7 @@ export default function LeaveManagement() {
               />
             </Grid>
 
-            <Grid size={{xs:12}}>
+            <Grid item xs={12}>
               <TextField
                 label="Reason"
                 fullWidth

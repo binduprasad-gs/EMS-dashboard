@@ -58,6 +58,37 @@ const theme = createTheme({
       fontSize: "1rem",
       fontWeight: 500,
     },
+    // Add these new variants for MUI v5
+    subtitle1: {
+      fontSize: "1rem",
+      fontWeight: 400,
+    },
+    subtitle2: {
+      fontSize: "0.875rem",
+      fontWeight: 500,
+    },
+    body1: {
+      fontSize: "1rem",
+      fontWeight: 400,
+    },
+    body2: {
+      fontSize: "0.875rem",
+      fontWeight: 400,
+    },
+    button: {
+      fontSize: "0.875rem",
+      fontWeight: 500,
+      textTransform: "none",
+    },
+    caption: {
+      fontSize: "0.75rem",
+      fontWeight: 400,
+    },
+    overline: {
+      fontSize: "0.75rem",
+      fontWeight: 400,
+      textTransform: "uppercase",
+    },
   },
   components: {
     MuiButton: {
@@ -66,7 +97,17 @@ const theme = createTheme({
           borderRadius: 8,
           textTransform: "none",
           fontWeight: 500,
+          // Add shadow to contained buttons
+          "&.MuiButton-contained": {
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            "&:hover": {
+              boxShadow: "0 6px 10px rgba(0, 0, 0, 0.15)",
+            },
+          },
         },
+      },
+      defaultProps: {
+        disableElevation: true, // Use flat design for buttons
       },
     },
     MuiCard: {

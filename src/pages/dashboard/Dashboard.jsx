@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import {
   Box,
+  Grid,
   Typography,
   Card,
   CardContent,
@@ -20,7 +21,6 @@ import {
   MenuItem,
   useTheme,
 } from "@mui/material"
-import Grid from '@mui/material/Grid';
 import {
   People as PeopleIcon,
   EventNote as EventNoteIcon,
@@ -133,16 +133,17 @@ export default function Dashboard() {
 
       {/* Stats Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid size={{ xs:12, sm:6, md:3 }}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
-            elevation={2}
             sx={{
               height: "100%",
               borderLeft: `4px solid ${theme.palette.primary.main}`,
-              transition: "transform 0.3s",
+              transition: "transform 0.3s, box-shadow 0.3s",
               "&:hover": {
                 transform: "translateY(-5px)",
+                boxShadow: 8, // Use boxShadow instead of elevation for hover effects
               },
+              boxShadow: 2, // Use boxShadow instead of elevation prop
             }}
           >
             <CardContent>
@@ -166,16 +167,17 @@ export default function Dashboard() {
           </Card>
         </Grid>
 
-        <Grid size={{ xs:12, sm:6 , md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
-            elevation={2}
             sx={{
               height: "100%",
               borderLeft: `4px solid ${theme.palette.secondary.main}`,
-              transition: "transform 0.3s",
+              transition: "transform 0.3s, box-shadow 0.3s",
               "&:hover": {
                 transform: "translateY(-5px)",
+                boxShadow: 8, // Use boxShadow instead of elevation for hover effects
               },
+              boxShadow: 2, // Use boxShadow instead of elevation prop
             }}
           >
             <CardContent>
@@ -199,16 +201,17 @@ export default function Dashboard() {
           </Card>
         </Grid>
 
-        <Grid size={{ xs:12, sm:6 , md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
-            elevation={2}
             sx={{
               height: "100%",
               borderLeft: `4px solid ${theme.palette.success.main}`,
-              transition: "transform 0.3s",
+              transition: "transform 0.3s, box-shadow 0.3s",
               "&:hover": {
                 transform: "translateY(-5px)",
+                boxShadow: 8, // Use boxShadow instead of elevation for hover effects
               },
+              boxShadow: 2, // Use boxShadow instead of elevation prop
             }}
           >
             <CardContent>
@@ -232,16 +235,17 @@ export default function Dashboard() {
           </Card>
         </Grid>
 
-        <Grid size={{ xs:12, sm:6 , md:3}}>
+        <Grid item xs={12} sm={6} md={3}>
           <Card
-            elevation={2}
             sx={{
               height: "100%",
               borderLeft: `4px solid ${theme.palette.warning.main}`,
-              transition: "transform 0.3s",
+              transition: "transform 0.3s, box-shadow 0.3s",
               "&:hover": {
                 transform: "translateY(-5px)",
+                boxShadow: 8, // Use boxShadow instead of elevation for hover effects
               },
+              boxShadow: 2, // Use boxShadow instead of elevation prop
             }}
           >
             <CardContent>
@@ -269,8 +273,16 @@ export default function Dashboard() {
       {/* Charts and Lists */}
       <Grid container spacing={3}>
         {/* Department Distribution */}
-        <Grid size={{ xs:12, md:6}}>
-          <Card elevation={2}>
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              boxShadow: 2,
+              transition: "box-shadow 0.3s",
+              "&:hover": {
+                boxShadow: 8,
+              },
+            }}
+          >
             <CardHeader
               title="Department Distribution"
               action={
@@ -312,8 +324,16 @@ export default function Dashboard() {
         </Grid>
 
         {/* Attendance Overview */}
-        <Grid size={{ xs:12, md:6}}> 
-          <Card elevation={2}>
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              boxShadow: 2,
+              transition: "box-shadow 0.3s",
+              "&:hover": {
+                boxShadow: 8,
+              },
+            }}
+          >
             <CardHeader
               title="Attendance Overview"
               action={
@@ -349,8 +369,16 @@ export default function Dashboard() {
         </Grid>
 
         {/* Recent Activities or Pending Approvals */}
-        <Grid size={{ xs:12,  md:6}}>
-          <Card elevation={2}>
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              boxShadow: 2,
+              transition: "box-shadow 0.3s",
+              "&:hover": {
+                boxShadow: 8,
+              },
+            }}
+          >
             <CardHeader
               title={isAdmin() ? "Pending Leave Approvals" : "Your Recent Leaves"}
               action={
@@ -445,8 +473,16 @@ export default function Dashboard() {
         </Grid>
 
         {/* Recent Employees or Quick Actions */}
-        <Grid size={{ xs:12,  md:6}}>
-          <Card elevation={2}>
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              boxShadow: 2,
+              transition: "box-shadow 0.3s",
+              "&:hover": {
+                boxShadow: 8,
+              },
+            }}
+          >
             <CardHeader
               title={isAdmin() ? "Recent Employees" : "Quick Actions"}
               action={
@@ -495,7 +531,7 @@ export default function Dashboard() {
                 </List>
               ) : (
                 <Grid container spacing={2}>
-                  <Grid size={{ xs:12,  sm:6}}>
+                  <Grid item xs={12} sm={6}>
                     <Button
                       variant="outlined"
                       color="primary"
@@ -507,7 +543,7 @@ export default function Dashboard() {
                       Mark Attendance
                     </Button>
                   </Grid>
-                  <Grid size={{ xs:12,  sm:6}}>
+                  <Grid item xs={12} sm={6}>
                     <Button
                       variant="outlined"
                       color="secondary"
@@ -519,7 +555,7 @@ export default function Dashboard() {
                       Apply for Leave
                     </Button>
                   </Grid>
-                  <Grid size={{ xs:12,  sm:6}}>
+                  <Grid item xs={12} sm={6}>
                     <Button
                       variant="outlined"
                       color="success"
@@ -531,7 +567,7 @@ export default function Dashboard() {
                       View Profile
                     </Button>
                   </Grid>
-                  <Grid size={{ xs:12,  sm:6}}>
+                  <Grid item xs={12} sm={6}>
                     <Button
                       variant="outlined"
                       color="warning"
@@ -552,5 +588,4 @@ export default function Dashboard() {
     </Box>
   )
 }
-
 

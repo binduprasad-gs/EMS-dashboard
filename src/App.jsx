@@ -2,6 +2,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import { LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns"
+import { enUS } from "date-fns/locale"
 
 // Layouts
 import DashboardLayout from "./layouts/DashboardLayout"
@@ -31,7 +32,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={enUS}>
         <AuthProvider>
           <EmployeeProvider>
             <LeaveProvider>

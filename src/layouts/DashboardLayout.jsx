@@ -16,8 +16,6 @@ import {
   ListItemIcon,
   ListItemText,
   Avatar,
-  Menu,
-  MenuItem,
   Tooltip,
   useMediaQuery,
   Badge,
@@ -31,8 +29,6 @@ import {
   BarChart as BarChartIcon,
   Person as PersonIcon,
   Notifications as NotificationsIcon,
-  Settings as SettingsIcon,
-  Logout as LogoutIcon,
   ChevronLeft as ChevronLeftIcon,
 } from "@mui/icons-material"
 import { useAuth } from "../contexts/AuthContext"
@@ -124,98 +120,19 @@ export default function DashboardLayout() {
             HR Dashboard
           </Typography>
 
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <Tooltip title="Notifications">
-              <IconButton color="inherit" onClick={handleOpenNotificationsMenu} sx={{ mr: 2 }}>
+              <IconButton color="inherit" onClick={handleOpenNotificationsMenu}>
                 <Badge badgeContent={notifications.length} color="error">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-notifications"
-              anchorEl={anchorElNotifications}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElNotifications)}
-              onClose={handleCloseNotificationsMenu}
-            >
-              {notifications.map((notification) => (
-                <MenuItem key={notification.id} onClick={handleCloseNotificationsMenu}>
-                  <Box sx={{ display: "flex", flexDirection: "column" }}>
-                    <Typography variant="body1">{notification.message}</Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      {notification.time}
-                    </Typography>
-                  </Box>
-                </MenuItem>
-              ))}
-              <Divider />
-              <MenuItem onClick={handleCloseNotificationsMenu}>
-                <Typography variant="body2" color="primary" align="center" sx={{ width: "100%" }}>
-                  View all notifications
-                </Typography>
-              </MenuItem>
-            </Menu>
-
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt={user?.name} src={user?.avatar} />
               </IconButton>
             </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem
-                onClick={() => {
-                  navigate("/profile")
-                  handleCloseUserMenu()
-                }}
-              >
-                <ListItemIcon>
-                  <PersonIcon fontSize="small" />
-                </ListItemIcon>
-                <Typography textAlign="center">Profile</Typography>
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleCloseUserMenu()
-                }}
-              >
-                <ListItemIcon>
-                  <SettingsIcon fontSize="small" />
-                </ListItemIcon>
-                <Typography textAlign="center">Settings</Typography>
-              </MenuItem>
-              <Divider />
-              <MenuItem onClick={handleLogout}>
-                <ListItemIcon>
-                  <LogoutIcon fontSize="small" />
-                </ListItemIcon>
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
-            </Menu>
           </Box>
         </Toolbar>
       </AppBar>
@@ -303,7 +220,7 @@ export default function DashboardLayout() {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${open ? drawerWidth : 0}px)` },
+          width: { xs: "100%", sm: `calc(100% - ${open ? drawerWidth : 0}px)` },
           ml: { sm: open ? `${drawerWidth}px` : 0 },
           transition: (theme) =>
             theme.transitions.create(["margin", "width"], {
